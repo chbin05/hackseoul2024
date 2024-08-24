@@ -4,6 +4,7 @@ import {AdvancedMarker, APIProvider, Map} from '@vis.gl/react-google-maps';
 
 import { TYPE_ICON } from '../../consts/trash';
 import MapPin from "../../views/ui/MapPin";
+import MapUserPin from "../../views/ui/MapUserPin";
 
 const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, defaultCenter, selectedLocation, userLocation }) => {
   const handleClick = useCallback((e) => {
@@ -26,7 +27,7 @@ const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, defaultCenter, se
           <AdvancedMarker
             key={`${userLocation.lat}-${userLocation.lng}`}
             position={userLocation}>
-             <div id='dot' style={{ width:'20px',height:'20px',background:'blue' }} />
+             <MapUserPin />
           </AdvancedMarker>}
         {selectedLocation?.lat &&
           <AdvancedMarker
