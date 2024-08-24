@@ -18,7 +18,7 @@ const Home = () => {
   const trashInfos = useRecoilValue(trashInfoAtom)
   const userLocation = useRecoilValue(userLocationAtom)
   const navigate = useNavigate();
-  const [currentLocation, setCurrentLocation] = useState<MapLocation>({ lat: 37.56014114732037, lng: 126.98241122396543 });
+  const [currentLocation, setCurrentLocation] = useState<MapLocation>(userLocation || null);
   const homeService = useHomeService();
   const [bounds, setBounds] = useState<Bounds>(null)
 
@@ -47,7 +47,9 @@ const Home = () => {
   }, [bounds]);
 
   useEffect(() => {
-    setCurrentLocation(userLocation)
+    if (!currentLocation) {
+      setCurrentLocation(userLocation)
+    }
   }, [userLocation])
 
   const handleStartCollect = useCallback(() => {
@@ -71,7 +73,12 @@ const Home = () => {
   return (
     <>
       <Header />
-      <Map onDranEnd={handleDragEnd} onChange={handleChange} markers={trashInfos.list} center={currentLocation}/>
+      <Map
+        onDranEnd={handleDragEnd}
+        onChange={handleChange}
+        markers={trashInfos.list}
+        defaultCenter={currentLocation}
+        userLocation={userLocation}/>
       <ButtonWrapper>
         <Button title="쓰레기 등록" onClick={handleClickAdd} />
         <Button type="blue" title="수집 하러가기" onClick={handleStartCollect} />

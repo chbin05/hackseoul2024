@@ -7,21 +7,28 @@ interface Props {
   type?: 'full' | 'report'
   onDranEnd?: (e) => void
   markers?: Trash[]
-  center?: MapLocation
+  defaultCenter?: MapLocation
   selectedLocation?: MapLocation
+  userLocation?: MapLocation
   onClickMap?: (e) => void
   onChange?: (e) => void
 }
 
-const Map = ({ type = 'full', onDranEnd, onChange, onClickMap, markers, center, selectedLocation }: Props) => {
+const Map = ({ type = 'full', onDranEnd, onChange, onClickMap, markers, defaultCenter, selectedLocation, userLocation }: Props) => {
+  if (!defaultCenter) {
+    return null
+  }
+
   return (
     <div className={styles[`wrap-${type}`]}>
       <GoogleMap
         onDranEnd={onDranEnd}
         onChange={onChange}
         markers={markers}
-        center={center}
+        defaultCenter={defaultCenter}
         onClickMap={onClickMap}
+        selectedLocation={selectedLocation}
+        userLocation={userLocation}
       />
     </div>
   )

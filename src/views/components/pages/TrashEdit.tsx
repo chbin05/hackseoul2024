@@ -52,7 +52,7 @@ const TrashEdit = () => {
       ...tempTrashInfos,
       {
         type: tempType,
-        location: tempLocation
+        location: tempLocation || userLocation
       }
     ])
   }, [tempType, tempLocation, userLocation])
@@ -65,7 +65,14 @@ const TrashEdit = () => {
   return (
     <>
       <Header />
-      <Map type='report' onClickMap={handleSetTempData} selectedLocation={tempLocation} />
+      <Map
+        type='report'
+        markers={tempTrashInfos}
+        onClickMap={handleSetTempData}
+        defaultCenter={userLocation}
+        userLocation={userLocation}
+        selectedLocation={tempLocation}
+      />
       <TrashList selectedType={tempType} onSelectTrashType={handleSelectTrashType} onClickAddTemp={handleAddTemp}/>
       <TrashAddedList addedList={tempTrashInfos} onDeleteTemp={handleDeleteTemp}/>
       <ButtonWrapper>
