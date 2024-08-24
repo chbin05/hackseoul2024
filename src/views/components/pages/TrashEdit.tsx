@@ -4,7 +4,7 @@ import Header from '../../ui/Header';
 import Map from '../../ui/Map';
 import TrashAddedList from '../../ui/TrashAddedList';
 import TrashList from '../../ui/TrashList';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useEditService from '../../../services/edit';
 import { Trash, TrashType } from '../../../interfaces/trash';
 import { useRecoilValue } from 'recoil';

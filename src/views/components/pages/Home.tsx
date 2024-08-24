@@ -37,7 +37,9 @@ const Home = () => {
     const parsedQuery = parse(window.location.search)
     parsedQuery.userId && setUserId(parsedQuery.userId)
     window.document.addEventListener('message', handlePostMessage)
-    sendPostMessage({ type: MessageType.coordinate })
+    setInterval(() => {
+      sendPostMessage({ type: MessageType.coordinate })
+    }, 10000)
 
     return () => {
       window.document.removeEventListener('message', handlePostMessage)
