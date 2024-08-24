@@ -33,7 +33,7 @@ const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, defaultCenter, se
           <AdvancedMarker
             key={`${selectedLocation.lat}-${selectedLocation.lng}`}
             position={selectedLocation}>
-            <div id='dot' style={{ width:'10px',height:'10px',background:'red' }} />
+            <div id='dot' style={{ width:'10px',height:'10px',background:'red', borderRadius: '50%' }} />
           </AdvancedMarker>}
       </Map>
     </APIProvider>
