@@ -1,0 +1,19 @@
+@import "../../scss/utils";
+
+@mixin button($border-color) {
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+  border: 2px solid $border-color;
+  border-radius: 50px;
+  color: $black-armor-wash;
+  font-size: 16px;
+}
+
+.wrap-green {
+  @include button($green-pond-edge);
+}
+
+.wrap-blue {
+  @include button($blue-ceil);
+}

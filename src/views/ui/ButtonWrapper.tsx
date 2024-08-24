@@ -1,11 +1,9 @@
-import React from 'react'
-import Button from './Button'
+import styles from './ButtonWrapper.module.scss'
 
-
-const ButtonWrapper = () => {
+const ButtonWrapper = ({children}) => {
   return (
-    <div>
-      <Button title='text' onClick={()=>{}} />
+    <div className={styles.wrap}>
+      {children}
     </div>
   )
 }

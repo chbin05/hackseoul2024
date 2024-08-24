@@ -1,16 +1,18 @@
-import React from 'react'
-
 import Map from '../../ui/Map'
 import Header from '../../ui/Header'
-import HomeButtons from '../../ui/HomeButtons'
+import ButtonWrapper from '../../ui/ButtonWrapper'
+import Button from '../../ui/Button'
 
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
     <>
       <Header />
       <Map />
-      <HomeButtons/> 
+      <ButtonWrapper>
+        <Button title='쓰레기 발견' onClick={()=>{}} />
+        <Button type='blue' title='플로깅 시작' onClick={()=>{}} />      
+    </ButtonWrapper>
     </>
   )
 }
