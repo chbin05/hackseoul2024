@@ -1,0 +1,25 @@
+@import "../../scss/utils";
+
+.wrap {
+  padding: 24px;
+}
+
+.hero {
+  padding: 20px 0;
+  background-color: rgba($green-pond-edge, 0.5);
+  text-align: center;
+}
+
+.title {
+  color: $black-armor-wash;
+  font-size: 22px;
+  white-space: pre-wrap;
+}
+
+.message {
+  padding-top: 10px;
+  color: $grey-old-silver;
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
