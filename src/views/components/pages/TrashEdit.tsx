@@ -12,6 +12,7 @@ import { userLocationAtom } from '../../../recoil/atoms/userAtom';
 import { MapLocation } from '../../../interfaces/map';
 import { useNavigate } from 'react-router-dom';
 import { ArrayUtils } from '../../../utils/arrayUtils';
+import Dialog from '../../ui/Dialog';
 
 const TrashEdit = () => {
   const navigator = useNavigate()
@@ -20,10 +21,11 @@ const TrashEdit = () => {
   const [tempType, setTempType] = useState<TrashType>(TrashType.ALL)
   const [tempLocation, setTempLocation] = useState<MapLocation>(null)
   const [tempTrashInfos, setTempTrashInfos] = useState<Trash[]>([])
+  const [warnMessage, setWarnMessage] = useState<string>(null)
 
   const handleAdd = useCallback(async () => {
     if (tempTrashInfos.length === 0) {
-      alert('추가버튼으로 등록할 아이템을 추가해주세요!')
+      setWarnMessage('추가버튼으로 등록할 아이템을 추가해주세요!')
       return
     }
 
@@ -44,7 +46,7 @@ const TrashEdit = () => {
 
   const handleAddTemp = useCallback(() => {
     if (!tempLocation && !userLocation) {
-      alert('위치를 선택해주세요.')
+      setWarnMessage('위치를 선택해주세요.')
       return
     }
 
@@ -62,6 +64,10 @@ const TrashEdit = () => {
     setTempTrashInfos(newTempInfos)
   }, [tempTrashInfos])
 
+  const handleCloseDialog = useCallback(() => {
+    setWarnMessage(null)
+  }, [])
+
   return (
     <>
       <Header />
@@ -78,6 +84,7 @@ const TrashEdit = () => {
       <ButtonWrapper>
         <Button title='쓰레기 등록' onClick={handleAdd} />
       </ButtonWrapper>
+      {warnMessage && <Dialog title='안내' message={warnMessage} onClose={handleCloseDialog} />}
     </>
   )
 }
