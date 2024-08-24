@@ -5,7 +5,7 @@ import {AdvancedMarker, APIProvider, Map} from '@vis.gl/react-google-maps';
 import { TYPE_ICON } from '../../consts/trash';
 import MapPin from "../../views/ui/MapPin";
 
-const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, center, selectedLocation }) => {
+const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, defaultCenter, selectedLocation, userLocation }) => {
   const handleClick = useCallback((e) => {
     onClickMap?.(e)
   }, []);
@@ -14,19 +14,25 @@ const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, center, selectedL
     <APIProvider apiKey={'AIzaSyDcnkT2tvZnAnCilXxfuaoO9-o06wBELMU'} onLoad={() => console.log('Maps API has loaded.')}>
       <Map
         mapId='c22491880465f6'
-        defaultZoom={15}
-        defaultCenter={{ lat: 37.56014114732037, lng: 126.98241122396543 }}
-        center={center}
+        defaultZoom={18}
+        defaultCenter={defaultCenter}
+        center={null}
         onClick={handleClick}
         onDragend={onDranEnd}
         onCameraChanged={onChange}
       >
         <PoiMarkers markers={markers} />
+        {userLocation?.lat &&
+          <AdvancedMarker
+            key={`${userLocation.lat}-${userLocation.lng}`}
+            position={userLocation}>
+             <div id='dot' style={{ width:'20px',height:'20px',background:'blue' }} />
+          </AdvancedMarker>}
         {selectedLocation?.lat &&
           <AdvancedMarker
             key={`${selectedLocation.lat}-${selectedLocation.lng}`}
             position={selectedLocation}>
-             <div id='dot' style={{ width:'10px',height:'10px',background:'red' }} />
+            <div id='dot' style={{ width:'10px',height:'10px',background:'red' }} />
           </AdvancedMarker>}
       </Map>
     </APIProvider>

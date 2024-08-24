@@ -2,27 +2,47 @@ import GoogleMap from '../../modules/views/GoogleMap';
 import styles from './Map.module.scss'
 import { MapLocation } from '../../interfaces/map';
 import { Trash } from '../../interfaces/trash';
+import React from 'react';
 
 interface Props {
   type?: 'full' | 'report'
   onDranEnd?: (e) => void
   markers?: Trash[]
-  center?: MapLocation
+  defaultCenter?: MapLocation
   selectedLocation?: MapLocation
+  userLocation?: MapLocation
   onClickMap?: (e) => void
   onChange?: (e) => void
 }
 
-const Map = ({ type = 'full', onDranEnd, onChange, onClickMap, markers, center, selectedLocation }: Props) => {
+const Map = ({ type = 'full', onDranEnd, onChange, onClickMap, markers, defaultCenter, selectedLocation, userLocation }: Props) => {
+  if (!defaultCenter) {
+    return (
+      <div className={styles[`wrap-${type}`]}>
+        <GoogleMap
+          onDranEnd={onDranEnd}
+          onChange={onChange}
+          markers={markers}
+          defaultCenter={{ lat: 37.56014114732037, lng: 126.98241122396543 }}
+          onClickMap={onClickMap}
+          selectedLocation={selectedLocation}
+          userLocation={{ lat: 37.56014114732037, lng: 126.98241122396543 }}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className={styles[`wrap-${type}`]}>
       <GoogleMap
         onDranEnd={onDranEnd}
         onChange={onChange}
         markers={markers}
-        center={center}
+        defaultCenter={defaultCenter}
         onClickMap={onClickMap}
-        selectedLocation={selectedLocation} />
+        selectedLocation={selectedLocation}
+        userLocation={userLocation}
+      />
     </div>
   )
 }
