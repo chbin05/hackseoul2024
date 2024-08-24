@@ -1,0 +1,103 @@
+@charset 'utf-8';
+
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+table,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+textarea,
+button,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+audio,
+video,
+blockquote {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	position: relative;
+	background-color: #fff;
+	word-wrap: break-word;
+	word-break: break-all;
+	text-size-adjust: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+	-webkit-touch-callout: none;
+}
+
+img {
+	vertical-align: top;
+	border: 0;
+	-webkit-user-drag: none;
+}
+
+svg {
+	vertical-align: top;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+em {
+	font-style: normal;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
+	color: inherit;
+	cursor: pointer;
+	user-select: none;
+}
+
+button:disabled {
+	cursor: default;
+}
+
+textarea {
+	-webkit-overflow-scrolling: touch;
+	border: 0;
+	border-radius: 0;
+	resize: none;
+	appearance: none;
+}
+
+input {
+	border-radius: 0;
+	appearance: none;
+}

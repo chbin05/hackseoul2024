@@ -1,0 +1,24 @@
+@charset 'utf-8';
+
+@mixin blind {
+	position: absolute;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+@mixin ellipsis($line: 1, $wordBreak: break-word) {
+	@if $line == 1 {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	} @else if $line > 1 {
+		display: box;
+		word-break: $wordBreak;
+		-webkit-line-clamp: $line;
+		-webkit-box-orient: vertical;
+	}
+
+	overflow: hidden;
+}
