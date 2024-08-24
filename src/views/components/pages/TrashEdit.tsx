@@ -1,7 +1,7 @@
-const Discovery = () => {
+const TrashEdit = () => {
   return (
-    <>발견페이지</>
+    <>쓰레기 등록 페이지</>
   )
 }
 
-export default Discovery
+export default TrashEdit
