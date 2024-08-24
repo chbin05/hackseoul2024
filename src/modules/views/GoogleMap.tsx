@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 
-import { AdvancedMarker, APIProvider, Map, Pin } from '@vis.gl/react-google-maps';
+import {AdvancedMarker, APIProvider, Map} from '@vis.gl/react-google-maps';
+
+import glass from '../../img/glass.png'
 
 const GoogleMap = ({ onCameraChanged, onClickMap, locations, center, selectedLocation }) => {
   const handleClick = useCallback((e) => {
@@ -40,7 +42,7 @@ const PoiMarkers = ({ pois = [] }) => {
         <AdvancedMarker
           key={`${poi.lat}-${poi.lng}`}
           position={poi}>
-          <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} />
+          <img src={glass} width={30} height={30} alt='' />
         </AdvancedMarker>
       ))}
     </>
