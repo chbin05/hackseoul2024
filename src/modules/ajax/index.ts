@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios'
+import { addToQueryString } from '../../utils/locationUtils';
 let ajax: AxiosInstance | undefined
 
 const defaultConfig = {
@@ -15,6 +16,10 @@ const ajaxModules = {
         return Promise.reject(error)
       },
     )
+    ajax.interceptors.request.use((config) => {
+      config.url = addToQueryString({ url: config.url, queries: { userId: 'dummyuser1' } })
+      return config
+    })
   },
   get<T = any>(url: string, config?: any) {
     return ajax.get<T>(url, config)
