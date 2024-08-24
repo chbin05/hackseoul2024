@@ -1,7 +1,7 @@
-const Plogging = () => {
+const TrashCollect = () => {
   return (
-    <>플로깅 시작 페이지</>
+    <>쓰레기 수집 페이지</>
   )
 }
 
-export default Plogging
+export default TrashCollect
