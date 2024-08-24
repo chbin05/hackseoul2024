@@ -11,7 +11,7 @@ const Home = () => {
       <Map />
       <ButtonWrapper>
         <Button title='쓰레기 발견' onClick={()=>{}} />
-        <Button type='blue' title='쓰레기 정리 시작' onClick={()=>{}} />      
+        <Button type='blue' title='플로깅 시작' onClick={()=>{}} />      
     </ButtonWrapper>
     </>
   )
