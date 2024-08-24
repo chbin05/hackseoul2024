@@ -29,7 +29,7 @@ const TrashCollect = () => {
     setStartCollect(false)
     await endCollect(userId, userPageId)
     navigate('/complete')
-  }, [])
+  }, [userId, userPageId])
 
   return (
     <>
