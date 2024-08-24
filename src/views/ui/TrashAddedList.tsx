@@ -28,7 +28,7 @@ const TrashAddedList = () => {
     <div className={styles.wrap}>
       <ul className={styles.list}>
         {List.map(({id, icon, text}, index)=>(
-          <li key={id}>
+          <li className={styles.item} key={id}>
             <TrashAddedItem index={index + 1} icon={icon} text={text} />
           </li>
         ))}
