@@ -2,6 +2,7 @@ import GoogleMap from '../../modules/views/GoogleMap';
 import styles from './Map.module.scss'
 import { MapLocation } from '../../interfaces/map';
 import { Trash } from '../../interfaces/trash';
+import React from 'react';
 
 interface Props {
   type?: 'full' | 'report'
@@ -16,7 +17,19 @@ interface Props {
 
 const Map = ({ type = 'full', onDranEnd, onChange, onClickMap, markers, defaultCenter, selectedLocation, userLocation }: Props) => {
   if (!defaultCenter) {
-    return null
+    return (
+      <div className={styles[`wrap-${type}`]}>
+        <GoogleMap
+          onDranEnd={onDranEnd}
+          onChange={onChange}
+          markers={markers}
+          defaultCenter={{ lat: 37.56014114732037, lng: 126.98241122396543 }}
+          onClickMap={onClickMap}
+          selectedLocation={selectedLocation}
+          userLocation={{ lat: 37.56014114732037, lng: 126.98241122396543 }}
+        />
+      </div>
+    )
   }
 
   return (
