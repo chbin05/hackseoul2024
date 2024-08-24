@@ -1,13 +1,14 @@
 import React from 'react';
-import GoogleMap from './modules/views/GoogleMap';
+import { BrowserRouter } from 'react-router-dom'
+import Router from './common/Router'
 
 import './scss/global.scss'
 
 function App() {
   return (
-    <>
-      <GoogleMap />
-    </>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,16 @@
+@mixin layout {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.wrap-full {
+  @include layout;
+  
+  height: calc(100vh - 150px);
+}
+
+.wrap-report {
+  @include layout;
+
+  height: calc(100vh - 300px);
+}
