@@ -21,10 +21,11 @@ const TrashEdit = () => {
   const [tempTrashInfos, setTempTrashInfos] = useState<Trash[]>([])
 
   const handleAdd = useCallback(async () => {
-    // const trashInfo = {
-    //   type: TrashType.PLASTIC,
-    //   location: userLocation || tempLocation
-    // }
+    if (tempTrashInfos.length === 0) {
+      alert('추가버튼으로 등록할 아이템을 추가해주세요!')
+      return
+    }
+
     await editService.addTrashInfo(tempTrashInfos)
     navigator('/')
   }, [userLocation, tempLocation, editService])
