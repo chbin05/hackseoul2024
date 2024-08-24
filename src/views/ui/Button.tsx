@@ -1,10 +1,8 @@
-import React from 'react'
-
 import styles from './Button.module.scss'
 
-const Button = ({title, onClick}) => {
+const Button = ({type = 'green', title, onClick}) => {
   return (
-    <button className={styles.wrap} type='button' onClick={onClick}>
+    <button className={styles[`wrap-${type}`]} type='button' onClick={onClick}>
       {title}
     </button>
   )
