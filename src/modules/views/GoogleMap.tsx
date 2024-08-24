@@ -1,11 +1,10 @@
-import {useCallback} from "react";
+import { useCallback } from "react";
 
-import {AdvancedMarker, APIProvider, Map, Pin} from '@vis.gl/react-google-maps';
+import { AdvancedMarker, APIProvider, Map, Pin } from '@vis.gl/react-google-maps';
 
-const GoogleMap = ({ onCameraChanged, locations, center }) => {
-  const handleClick = useCallback((ev) => {
-      console.log("latitide = ", ev.detail.latLng?.lat);
-      console.log("longitude = ", ev.detail.latLng?.lng);
+const GoogleMap = ({ onCameraChanged, onClickMap, locations, center, selectedLocation }) => {
+  const handleClick = useCallback((e) => {
+    onClickMap?.(e)
   }, []);
 
   return (
@@ -19,6 +18,12 @@ const GoogleMap = ({ onCameraChanged, locations, center }) => {
         onCameraChanged={onCameraChanged}
       >
         <PoiMarkers pois={locations} />
+        {selectedLocation?.lat &&
+          <AdvancedMarker
+            key={`${selectedLocation.lat}-${selectedLocation.lng}`}
+            position={selectedLocation}>
+             <div id='dot' style={{ width:'10px',height:'10px',background:'red' }} />
+          </AdvancedMarker>}
       </Map>
     </APIProvider>
   );

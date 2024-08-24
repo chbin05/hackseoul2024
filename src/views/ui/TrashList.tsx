@@ -4,11 +4,11 @@ import styles from './TrashList.module.scss'
 const List = [
   {id: '1', icon: 'icon', checked: false},
   {id: '2', icon: 'icon', checked: true},
-  {id: '2', icon: 'icon', checked: true},
-  {id: '2', icon: 'icon', checked: true},
-  {id: '2', icon: 'icon', checked: true},
-  {id: '2', icon: 'icon', checked: true},
-  {id: '2', icon: 'icon', checked: true},
+  {id: '3', icon: 'icon', checked: true},
+  {id: '4', icon: 'icon', checked: true},
+  {id: '5', icon: 'icon', checked: true},
+  {id: '6', icon: 'icon', checked: true},
+  {id: '7', icon: 'icon', checked: true},
 ]
 
 const TrashList = () => {

@@ -7,12 +7,19 @@ interface Props {
   onCameraChanged?: (e) => void
   locations?: MapLocation[]
   center?: MapLocation
+  selectedLocation?: MapLocation
+  onClickMap?: (e) => void
 }
 
-const Map = ({type = 'full', onCameraChanged, locations, center}: Props) => {
+const Map = ({ type = 'full', onCameraChanged, onClickMap, locations, center, selectedLocation }: Props) => {
   return (
     <div className={styles[`wrap-${type}`]}>
-      <GoogleMap onCameraChanged={onCameraChanged} locations={locations} center={center} />
+      <GoogleMap
+        onCameraChanged={onCameraChanged}
+        locations={locations}
+        center={center}
+        onClickMap={onClickMap}
+        selectedLocation={selectedLocation} />
     </div>
   )
 }

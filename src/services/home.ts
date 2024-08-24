@@ -5,6 +5,7 @@ import { trashInfoAtom } from '../recoil/atoms/trashAtom';
 
 export default function useHomeService() {
   const setTrashInfos = useSetRecoilState(trashInfoAtom)
+
   const fetchAllTrashDataInMap = async (bounds: Bounds) => {
     const list = await getAllTrashDataMap(bounds)
     setTrashInfos({ list })
