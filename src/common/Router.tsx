@@ -1,20 +1,20 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { COMPLETION, DISCOVERY, HOME, PLOGGING } from './routePath'
+import { COMPLETE, EDIT, HOME, COLLECT } from './routePath'
 
 import HomePage from '../views/components/pages/Home'
-import PloggingPage from '../views/components/pages/Plogging'
-import CompletionPage from '../views/components/pages/Completion'
-import DiscoveryPage from '../views/components/pages/Discovery'
+import CollectPage from '../views/components/pages/TrashCollect'
+import CompletePage from '../views/components/pages/Complete'
+import EditPage from '../views/components/pages/TrashEdit'
 
 const Router: React.FC = () => {
   return (
     <Routes>
       <Route path={HOME} element={<HomePage />} />
-      <Route path={PLOGGING} element={<PloggingPage />} />
-      <Route path={COMPLETION} element={<CompletionPage />} />
-      <Route path={DISCOVERY} element={<DiscoveryPage />} />
+      <Route path={COLLECT} element={<CollectPage />} />
+      <Route path={COMPLETE} element={<CompletePage />} />
+      <Route path={EDIT} element={<EditPage />} />
     </Routes>
   )
 }
