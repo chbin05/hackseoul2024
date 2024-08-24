@@ -4,7 +4,7 @@ import {AdvancedMarker, APIProvider, Map} from '@vis.gl/react-google-maps';
 
 import { TYPE_ICON } from '../../consts/trash';
 
-const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, center, selectedLocation }) => {
+const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, center }) => {
   const handleClick = useCallback((e) => {
     onClickMap?.(e)
   }, []);
@@ -21,10 +21,10 @@ const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, center, selectedL
         onCameraChanged={onChange}
       >
         <PoiMarkers markers={markers} />
-        {selectedLocation?.lat &&
+        {center?.lat &&
           <AdvancedMarker
-            key={`${selectedLocation.lat}-${selectedLocation.lng}`}
-            position={selectedLocation}>
+            key={`${center.lat}-${center.lng}`}
+            position={center}>
              <div id='dot' style={{ width:'10px',height:'10px',background:'red' }} />
           </AdvancedMarker>}
       </Map>

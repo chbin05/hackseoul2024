@@ -22,7 +22,7 @@ const Map = ({ type = 'full', onDranEnd, onChange, onClickMap, markers, center, 
         markers={markers}
         center={center}
         onClickMap={onClickMap}
-        selectedLocation={selectedLocation} />
+      />
     </div>
   )
 }

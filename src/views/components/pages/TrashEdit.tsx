@@ -11,6 +11,7 @@ import { useRecoilValue } from 'recoil';
 import { userLocationAtom } from '../../../recoil/atoms/userAtom';
 import { MapLocation } from '../../../interfaces/map';
 import { useNavigate } from 'react-router-dom';
+import { ArrayUtils } from '../../../utils/arrayUtils';
 
 const TrashEdit = () => {
   const navigator = useNavigate()
@@ -56,12 +57,17 @@ const TrashEdit = () => {
     ])
   }, [tempType, tempLocation, userLocation])
 
+  const handleDeleteTemp = useCallback((e, index) => {
+    const newTempInfos = ArrayUtils.removeByIndex([...tempTrashInfos], index)
+    setTempTrashInfos(newTempInfos)
+  }, [tempTrashInfos])
+
   return (
     <>
       <Header />
       <Map type='report' onClickMap={handleSetTempData} selectedLocation={tempLocation} />
       <TrashList selectedType={tempType} onSelectTrashType={handleSelectTrashType} onClickAddTemp={handleAddTemp}/>
-      <TrashAddedList addedList={tempTrashInfos}/>
+      <TrashAddedList addedList={tempTrashInfos} onDeleteTemp={handleDeleteTemp}/>
       <ButtonWrapper>
         <Button title='쓰레기 등록' onClick={handleAdd} />
       </ButtonWrapper>
