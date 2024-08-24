@@ -40,11 +40,7 @@ const Home = () => {
     window.document.addEventListener('message', handlePostMessage)
     setInterval(() => {
       sendPostMessage({ type: MessageType.coordinate })
-    }, 10000)
-
-    return () => {
-      window.document.removeEventListener('message', handlePostMessage)
-    }
+    }, 3000)
   }, [])
 
   useEffect(() => {
