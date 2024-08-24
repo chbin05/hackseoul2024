@@ -10,6 +10,10 @@
   border-radius: 50px;
   color: $black-armor-wash;
   font-size: 16px;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .wrap-green {

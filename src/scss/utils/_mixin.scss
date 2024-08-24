@@ -39,7 +39,7 @@
 		pointer-events: none;
 	}
 
-  &:active {
+  &:active:not(:disabled) {
 		transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 		transform: scale(0.95);
 
