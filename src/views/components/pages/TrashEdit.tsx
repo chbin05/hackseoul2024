@@ -2,6 +2,7 @@ import Button from "../../ui/Button"
 import ButtonWrapper from "../../ui/ButtonWrapper"
 import Header from "../../ui/Header"
 import Map from '../../ui/Map'
+import TrashAddedList from "../../ui/TrashAddedList"
 import TrashList from "../../ui/TrashList"
 import { useCallback, useState } from 'react';
 import useEditService from '../../../services/edit';
@@ -21,7 +22,7 @@ const TrashEdit = () => {
       location: userLocation || tempLocation
     }
     await editService.addTrashInfo(trashInfo)
-  }, [userLocation, tempLocation])
+  }, [userLocation, tempLocation, editService])
 
   const handleSetTempData = useCallback((e) => {
     setTempLocation({
@@ -35,6 +36,7 @@ const TrashEdit = () => {
       <Header />
       <Map type='report' onClickMap={handleSetTempData} selectedLocation={tempLocation} />
       <TrashList />
+      <TrashAddedList />
       <ButtonWrapper>
         <Button title='쓰레기 등록' onClick={handleAdd} />
       </ButtonWrapper>

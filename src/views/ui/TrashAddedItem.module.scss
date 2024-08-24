@@ -1,0 +1,12 @@
+@import "../../scss/utils";
+
+.wrap {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.button {
+  padding: 5px;
+  background: $blue-pale-gray;
+}
