@@ -1,0 +1,20 @@
+@charset 'utf-8';
+
+html,
+body,
+#root {
+	height: 100%;
+}
+
+body {
+	font-family: system-ui, AppleSDGothicNeo, sans-serif;
+}
+
+.blind {
+	position: absolute;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	clip-path: polygon(0 0, 0 0, 0 0);
+}
