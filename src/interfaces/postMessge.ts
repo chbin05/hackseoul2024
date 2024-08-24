@@ -1,3 +1,4 @@
 export const enum MessageType {
-  coordinate ='coordinate'
+  coordinate = 'coordinate',
+  sendId = 'sendId'
 }
