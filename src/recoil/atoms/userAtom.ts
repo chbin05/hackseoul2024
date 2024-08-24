@@ -6,12 +6,12 @@ export const userLocationAtom: RecoilState<MapLocation> = atom({
   default: null
 })
 
-export const userPageIdAtom: RecoilState<MapLocation> = atom({
+export const userPageIdAtom: RecoilState<number> = atom({
   key:'userPageIdAtom',
   default: null
 })
 
-export const userIdAtom: RecoilState<MapLocation> = atom({
+export const userIdAtom: RecoilState<number> = atom({
   key:'userIdAtom',
   default: null
 })

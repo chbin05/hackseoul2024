@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import Map from '../../ui/Map';
 import Header from '../../ui/Header';
@@ -12,9 +12,11 @@ import { trashInfoAtom } from '../../../recoil/atoms/trashAtom';
 import { sendPostMessage } from '../../../modules/postMessage/postMessageSender';
 import { MessageType } from '../../../interfaces/postMessge';
 import useUserService from '../../../services/user';
-import { userLocationAtom } from '../../../recoil/atoms/userAtom';
+import { userIdAtom, userLocationAtom } from '../../../recoil/atoms/userAtom';
+import { parse } from 'query-string';
 
 const Home = () => {
+  const setUserId= useSetRecoilState(userIdAtom)
   const trashInfos = useRecoilValue(trashInfoAtom)
   const userLocation = useRecoilValue(userLocationAtom)
   const navigate = useNavigate();
@@ -32,6 +34,8 @@ const Home = () => {
   }, [])
 
   useEffect(() => {
+    const parsedQuery = parse(window.location.search)
+    setUserId(parsedQuery.userId ? parseInt(parsedQuery.userId, 10) : null)
     window.document.addEventListener('message', handlePostMessage)
     sendPostMessage({ type: MessageType.coordinate })
 

@@ -1,4 +1,5 @@
 export const enum MessageType {
   coordinate = 'coordinate',
-  sendId = 'sendId'
+  startCollect = 'startCollect',
+  stopCollect = 'stopCollect'
 }
