@@ -1,0 +1,30 @@
+.wrap {
+  position: relative;
+  display: inline-flex;
+
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+}
+
+.label {
+  position: relative;
+
+  .input:checked + &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid red;
+    border-radius: 50%;
+  }
+}
+
+.icon {
+  display: block;
+  overflow: hidden;
+  width: 44px;
+  height: 44px;
+  background: pink;
+}
