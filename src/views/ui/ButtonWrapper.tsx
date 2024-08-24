@@ -5,7 +5,7 @@ import Button from './Button'
 const ButtonWrapper = () => {
   return (
     <div>
-      <Button title='text' />
+      <Button title='text' onClick={()=>{}} />
     </div>
   )
 }
