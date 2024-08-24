@@ -1,7 +1,8 @@
-import {AdvancedMarker, APIProvider, Map, Pin} from '@vis.gl/react-google-maps';
 import {useCallback} from "react";
 
-type Poi ={ key: string, location: google.maps.LatLngLiteral }
+import {AdvancedMarker, APIProvider, Map, Pin} from '@vis.gl/react-google-maps';
+
+interface Poi { key: string, location: { lat: number, lng: number }}
 
 const locations: Poi[] = [
   {key: 'operaHouse', location: { lat: -33.8567844, lng: 151.213108  }},
@@ -42,10 +43,10 @@ const GoogleMap = () => {
   );
 };
 
-const PoiMarkers = (props: {pois: Poi[]}) => {
+const PoiMarkers = (props) => {
   return (
     <>
-      {props.pois.map( (poi: Poi) => (
+      {props.pois.map((poi) => (
         <AdvancedMarker
           key={poi.key}
           position={poi.location}>
