@@ -10,6 +10,6 @@ export const getAllTrashDataMap = async (bounds: Bounds) => {
 
     return result?.data
   } catch {
-    return []
+    return null
   }
 };

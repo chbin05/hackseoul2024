@@ -8,7 +8,9 @@ export default function useHomeService() {
 
   const fetchAllTrashDataInMap = async (bounds: Bounds) => {
     const list = await getAllTrashDataMap(bounds)
-    setTrashInfos({ list })
+    if (!!list) {
+      setTrashInfos({ list })
+    }
   };
 
   return {
