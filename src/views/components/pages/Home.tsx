@@ -28,10 +28,11 @@ const Home = () => {
 
   const handlePostMessage = useCallback((e) => {
     const { type, payload } = e?.data && JSON.parse(e?.data) || { type: null, payload: {} }
-    if (type === MessageType.coordinate) {
+    console.log({type, payload})
+    if (type === MessageType.coordinate && payload.location) {
       userService.setCurrentUserLocation(payload.location)
     }
-  }, [])
+  }, [userService])
 
   useEffect(() => {
     const parsedQuery = parse(window.location.search)
