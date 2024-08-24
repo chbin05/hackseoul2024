@@ -19,7 +19,6 @@ const Home = () => {
   const userLocation = useRecoilValue(userLocationAtom)
   const navigate = useNavigate();
   const [currentLocation, setCurrentLocation] = useState<MapLocation>({ lat: 37.56014114732037, lng: 126.98241122396543 });
-  const [startCollect, setStartCollect] = useState<boolean>(false);
   const homeService = useHomeService();
   const [bounds, setBounds] = useState<Bounds>(null)
 
@@ -33,11 +32,11 @@ const Home = () => {
   }, [])
 
   useEffect(() => {
-    window.addEventListener('message', handlePostMessage)
+    window.document.addEventListener('message', handlePostMessage)
     sendPostMessage({ type: MessageType.coordinate })
 
     return () => {
-      window.removeEventListener('message', handlePostMessage)
+      window.document.removeEventListener('message', handlePostMessage)
     }
   }, [])
 
@@ -52,13 +51,18 @@ const Home = () => {
   }, [userLocation])
 
   const handleStartCollect = useCallback(() => {
-    setStartCollect(true);
     navigate('/collect')
   }, []);
 
-  const handleChange = useCallback((e) => {
+  const handleDragEnd = useCallback((e) => {
     setBounds(e.detail?.bounds)
   }, [])
+
+  const handleChange = useCallback((e) => {
+    if (!bounds) {
+      setBounds(e.detail?.bounds)
+    }
+  }, [bounds])
 
   const handleClickAdd = useCallback(() => {
     navigate('/edit')
@@ -67,10 +71,10 @@ const Home = () => {
   return (
     <>
       <Header />
-      <Map onCameraChanged={handleChange} markers={trashInfos.list} center={currentLocation}/>
+      <Map onDranEnd={handleDragEnd} onChange={handleChange} markers={trashInfos.list} center={currentLocation}/>
       <ButtonWrapper>
         <Button title="쓰레기 등록" onClick={handleClickAdd} />
-        <Button type="blue" title="수집 시작" onClick={handleStartCollect} />
+        <Button type="blue" title="수집 하러가기" onClick={handleStartCollect} />
       </ButtonWrapper>
     </>
   );

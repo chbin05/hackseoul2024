@@ -4,7 +4,7 @@ import {AdvancedMarker, APIProvider, Map} from '@vis.gl/react-google-maps';
 
 import { TYPE_ICON } from '../../consts/trash';
 
-const GoogleMap = ({ onCameraChanged, onClickMap, markers, center, selectedLocation }) => {
+const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, center, selectedLocation }) => {
   const handleClick = useCallback((e) => {
     onClickMap?.(e)
   }, []);
@@ -17,7 +17,8 @@ const GoogleMap = ({ onCameraChanged, onClickMap, markers, center, selectedLocat
         defaultCenter={{ lat: 37.56014114732037, lng: 126.98241122396543 }}
         center={center}
         onClick={handleClick}
-        onCameraChanged={onCameraChanged}
+        onDragend={onDranEnd}
+        onCameraChanged={onChange}
       >
         <PoiMarkers markers={markers} />
         {selectedLocation?.lat &&
