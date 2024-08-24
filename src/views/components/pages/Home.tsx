@@ -70,6 +70,24 @@ const Home = () => {
     navigate('/edit')
   }, [])
 
+  if (!userLocation) {
+    return (
+      <>
+        <Header />
+        <Map
+          onDranEnd={handleDragEnd}
+          onChange={handleChange}
+          markers={trashInfos.list}
+          defaultCenter={{ lat: 37.56014114732037, lng: 126.98241122396543 }}
+          userLocation={{ lat: 37.56014114732037, lng: 126.98241122396543 }}/>
+        <ButtonWrapper>
+          <Button title="쓰레기 등록" onClick={handleClickAdd} />
+          <Button type="blue" title="수집 하러가기" onClick={handleStartCollect} />
+        </ButtonWrapper>
+      </>
+    )
+  }
+
   return (
     <>
       <Header />

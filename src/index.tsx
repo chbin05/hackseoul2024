@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 
 declare global {
   interface Window {
-    ReactNativeWebview: {
+    ReactNativeWebView: {
       postMessage: Function
     }
   }
