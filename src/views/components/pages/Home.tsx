@@ -25,7 +25,7 @@ const Home = () => {
   const userService = useUserService()
 
   const handlePostMessage = useCallback((e) => {
-    const { type, payload } = e.data
+    const { type, payload } = e?.data && JSON.parse(e?.data) || { type: null, payload: {} }
     if (type === MessageType.coordinate) {
       userService.setCurrentUserLocation(payload.location)
     }
