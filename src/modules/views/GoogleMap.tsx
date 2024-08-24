@@ -2,9 +2,9 @@ import { useCallback } from "react";
 
 import {AdvancedMarker, APIProvider, Map} from '@vis.gl/react-google-maps';
 
-import glass from '../../img/glass.png'
+import { TYPE_ICON } from '../../consts/trash';
 
-const GoogleMap = ({ onCameraChanged, onClickMap, locations, center, selectedLocation }) => {
+const GoogleMap = ({ onCameraChanged, onClickMap, markers, center, selectedLocation }) => {
   const handleClick = useCallback((e) => {
     onClickMap?.(e)
   }, []);
@@ -19,7 +19,7 @@ const GoogleMap = ({ onCameraChanged, onClickMap, locations, center, selectedLoc
         onClick={handleClick}
         onCameraChanged={onCameraChanged}
       >
-        <PoiMarkers pois={locations} />
+        <PoiMarkers markers={markers} />
         {selectedLocation?.lat &&
           <AdvancedMarker
             key={`${selectedLocation.lat}-${selectedLocation.lng}`}
@@ -31,18 +31,18 @@ const GoogleMap = ({ onCameraChanged, onClickMap, locations, center, selectedLoc
   );
 };
 
-const PoiMarkers = ({ pois = [] }) => {
-  if (pois?.length === 0) {
+const PoiMarkers = ({ markers = [] }) => {
+  if (markers?.length === 0) {
     return null
   }
 
   return (
     <>
-      {pois.map((poi) => (
+      {markers.map((marker, index) => (
         <AdvancedMarker
-          key={`${poi.lat}-${poi.lng}`}
-          position={poi}>
-          <img src={glass} width={30} height={30} alt='' />
+          key={`${marker?.location?.lat}-${index}`}
+          position={marker?.location}>
+          <img src={TYPE_ICON[marker.type].icon} width={30} height={30} alt='' />
         </AdvancedMarker>
       ))}
     </>

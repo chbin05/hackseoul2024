@@ -10,8 +10,10 @@ import { Trash, TrashType } from '../../../interfaces/trash';
 import { useRecoilValue } from 'recoil';
 import { userLocationAtom } from '../../../recoil/atoms/userAtom';
 import { MapLocation } from '../../../interfaces/map';
+import { useNavigate } from 'react-router-dom';
 
 const TrashEdit = () => {
+  const navigator = useNavigate()
   const editService = useEditService()
   const userLocation = useRecoilValue(userLocationAtom)
   const [tempType, setTempType] = useState<TrashType>(TrashType.ALL)
@@ -19,11 +21,12 @@ const TrashEdit = () => {
   const [tempTrashInfos, setTempTrashInfos] = useState<Trash[]>([])
 
   const handleAdd = useCallback(async () => {
-    const trashInfo = {
-      type: TrashType.PLASTIC,
-      location: userLocation || tempLocation
-    }
-    await editService.addTrashInfo(trashInfo)
+    // const trashInfo = {
+    //   type: TrashType.PLASTIC,
+    //   location: userLocation || tempLocation
+    // }
+    await editService.addTrashInfo(tempTrashInfos)
+    navigator('/')
   }, [userLocation, tempLocation, editService])
 
   const handleSetTempData = useCallback((e) => {
@@ -38,6 +41,11 @@ const TrashEdit = () => {
   }, [])
 
   const handleAddTemp = useCallback(() => {
+    if (!tempLocation && !userLocation) {
+      alert('위치를 선택해주세요.')
+      return
+    }
+
     setTempTrashInfos( [
       ...tempTrashInfos,
       {
@@ -45,7 +53,7 @@ const TrashEdit = () => {
         location: tempLocation
       }
     ])
-  }, [tempType, tempLocation])
+  }, [tempType, tempLocation, userLocation])
 
   return (
     <>

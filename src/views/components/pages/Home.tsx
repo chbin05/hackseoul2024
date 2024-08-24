@@ -64,14 +64,10 @@ const Home = () => {
     navigate('/edit')
   }, [])
 
-  const locations = useMemo(() => {
-    return trashInfos.list.map(({location}) => location)
-  }, [trashInfos])
-
   return (
     <>
       <Header />
-      <Map onCameraChanged={handleChange} locations={locations} center={currentLocation}/>
+      <Map onCameraChanged={handleChange} markers={trashInfos.list} center={currentLocation}/>
       <ButtonWrapper>
         <Button title="쓰레기 등록" onClick={handleClickAdd} />
         <Button type="blue" title="수집 시작" onClick={handleStartCollect} />
