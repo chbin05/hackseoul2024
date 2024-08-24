@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
@@ -19,25 +19,24 @@ const Home = () => {
   const userLocation = useRecoilValue(userLocationAtom)
   const navigate = useNavigate();
   const [currentLocation, setCurrentLocation] = useState<MapLocation>({ lat: 37.56014114732037, lng: 126.98241122396543 });
-  const [startCollect, setStartCollect] = useState<boolean>(false);
   const homeService = useHomeService();
   const [bounds, setBounds] = useState<Bounds>(null)
 
   const userService = useUserService()
 
   const handlePostMessage = useCallback((e) => {
-    const { type, location } = e.data
+    const { type, payload } = e?.data && JSON.parse(e?.data) || { type: null, payload: {} }
     if (type === MessageType.coordinate) {
-      userService.setCurrentUserLocation(location)
+      userService.setCurrentUserLocation(payload.location)
     }
   }, [])
 
   useEffect(() => {
-    window.addEventListener('message', handlePostMessage)
-    sendPostMessage(MessageType.coordinate)
+    window.document.addEventListener('message', handlePostMessage)
+    sendPostMessage({ type: MessageType.coordinate })
 
     return () => {
-      window.removeEventListener('message', handlePostMessage)
+      window.document.removeEventListener('message', handlePostMessage)
     }
   }, [])
 
@@ -52,29 +51,30 @@ const Home = () => {
   }, [userLocation])
 
   const handleStartCollect = useCallback(() => {
-    setStartCollect(true);
     navigate('/collect')
   }, []);
 
-  const handleChange = useCallback((e) => {
+  const handleDragEnd = useCallback((e) => {
     setBounds(e.detail?.bounds)
   }, [])
+
+  const handleChange = useCallback((e) => {
+    if (!bounds) {
+      setBounds(e.detail?.bounds)
+    }
+  }, [bounds])
 
   const handleClickAdd = useCallback(() => {
     navigate('/edit')
   }, [])
 
-  const locations = useMemo(() => {
-    return trashInfos.list.map(({location}) => location)
-  }, [trashInfos])
-
   return (
     <>
       <Header />
-      <Map onCameraChanged={handleChange} locations={locations} center={currentLocation}/>
+      <Map onDranEnd={handleDragEnd} onChange={handleChange} markers={trashInfos.list} center={currentLocation}/>
       <ButtonWrapper>
         <Button title="쓰레기 등록" onClick={handleClickAdd} />
-        <Button type="blue" title="수집 시작" onClick={handleStartCollect} />
+        <Button type="blue" title="수집 하러가기" onClick={handleStartCollect} />
       </ButtonWrapper>
     </>
   );
