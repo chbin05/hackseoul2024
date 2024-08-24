@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import {AdvancedMarker, APIProvider, Map} from '@vis.gl/react-google-maps';
 
 import { TYPE_ICON } from '../../consts/trash';
+import MapPin from "../../views/ui/MapPin";
 
 const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, center, selectedLocation }) => {
   const handleClick = useCallback((e) => {
@@ -43,7 +44,7 @@ const PoiMarkers = ({ markers = [] }) => {
         <AdvancedMarker
           key={`${marker?.location?.lat}-${index}`}
           position={marker?.location}>
-          <img src={TYPE_ICON[marker.type].icon} width={30} height={30} alt='' />
+          <MapPin icon={TYPE_ICON[marker.type].icon} />
         </AdvancedMarker>
       ))}
     </>
