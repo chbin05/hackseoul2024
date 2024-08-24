@@ -1,0 +1,23 @@
+@import "../../scss/utils";
+
+.wrap {
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  box-sizing: border-box;
+  width: calc(100% - 48px);
+  max-width: 366px;
+  border: 1px solid $grey-codex;
+  border-radius: 24px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  padding: 20px 24px 0;
+}
+
+.message {
+  padding: 10px 24px 5px;
+}

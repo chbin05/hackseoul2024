@@ -2,11 +2,34 @@
 
 .wrap {
   display: flex;
-  gap: 8px;
-  padding: 8px 0;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.num {
+  flex: 0 0 auto;
+  min-width: 20px;
+  color: $grey-codex;
+  font-size: 14px;
+  text-align: center
+}
+
+.name {
+  color: $black-armor-wash;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.img {
+  flex: 0 0 auto;
 }
 
 .button {
-  padding: 5px;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 8px;
+  border-radius: 10px;
   background: $blue-pale-gray;
+  color: $black-armor-wash;
 }
