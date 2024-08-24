@@ -25,10 +25,10 @@ const Map = ({ useIndex = false, type = 'full', onDranEnd, onChange, onClickMap,
           onDranEnd={onDranEnd}
           onChange={onChange}
           markers={markers}
-          defaultCenter={{ lat: 37.56014114732037, lng: 126.98241122396543 }}
+          defaultCenter={{ lat:37.5157658, lng:127.0990844 }}
           onClickMap={onClickMap}
           selectedLocation={selectedLocation}
-          userLocation={{ lat: 37.56014114732037, lng: 126.98241122396543 }}
+          userLocation={{ lat:37.5157658, lng:127.0990844 }}
         />
       </div>
     )

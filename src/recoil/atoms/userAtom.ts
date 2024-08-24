@@ -11,7 +11,7 @@ export const userPageIdAtom: RecoilState<number> = atom({
   default: null
 })
 
-export const userIdAtom: RecoilState<number> = atom({
+export const userIdAtom: RecoilState<string> = atom({
   key:'userIdAtom',
   default: null
 })

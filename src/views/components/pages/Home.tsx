@@ -35,7 +35,7 @@ const Home = () => {
 
   useEffect(() => {
     const parsedQuery = parse(window.location.search)
-    setUserId(parsedQuery.userId ? parseInt(parsedQuery.userId, 10) : null)
+    parsedQuery.userId && setUserId(parsedQuery.userId)
     window.document.addEventListener('message', handlePostMessage)
     sendPostMessage({ type: MessageType.coordinate })
 
