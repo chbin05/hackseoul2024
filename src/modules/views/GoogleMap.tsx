@@ -1,6 +1,8 @@
 import {useCallback} from "react";
 
-import {AdvancedMarker, APIProvider, Map, Pin} from '@vis.gl/react-google-maps';
+import {AdvancedMarker, APIProvider, Map} from '@vis.gl/react-google-maps';
+
+import glass from '../../img/glass.png'
 
 interface Poi { key: string, location: { lat: number, lng: number }}
 
@@ -50,7 +52,7 @@ const PoiMarkers = (props) => {
         <AdvancedMarker
           key={poi.key}
           position={poi.location}>
-          <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} />
+          <img src={glass} width={30} height={30} alt='' />
         </AdvancedMarker>
       ))}
     </>

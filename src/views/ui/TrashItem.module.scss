@@ -1,7 +1,10 @@
+@import "../../scss/utils";
+
 .wrap {
   position: relative;
   display: inline-flex;
-
+  justify-content: center;
+  width: 100%;
 }
 
 .input {
@@ -11,20 +14,27 @@
 
 .label {
   position: relative;
+  text-align: center;
+}
 
-  .input:checked + &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 2px solid red;
-    border-radius: 50%;
+.text {
+  display: block;
+  color: $grey-old-silver;
+  font-size: 14px;
+}
+
+.img-icon {
+  .input:checked + .label & {
+    opacity: 0.5;
   }
 }
 
-.icon {
-  display: block;
-  overflow: hidden;
-  width: 44px;
-  height: 44px;
-  background: pink;
+.img-check {
+  display: none;
+
+  .input:checked + .label & {
+    position: absolute;
+    top: 0;
+    display: block;
+  }
 }
