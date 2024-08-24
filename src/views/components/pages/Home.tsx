@@ -26,15 +26,15 @@ const Home = () => {
   const userService = useUserService()
 
   const handlePostMessage = useCallback((e) => {
-    const { type, location } = e.data
+    const { type, payload } = e.data
     if (type === MessageType.coordinate) {
-      userService.setCurrentUserLocation(location)
+      userService.setCurrentUserLocation(payload.location)
     }
   }, [])
 
   useEffect(() => {
     window.addEventListener('message', handlePostMessage)
-    sendPostMessage(MessageType.coordinate)
+    sendPostMessage({ type: MessageType.coordinate })
 
     return () => {
       window.removeEventListener('message', handlePostMessage)

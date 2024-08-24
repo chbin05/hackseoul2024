@@ -1,3 +1,3 @@
-export const sendPostMessage = (type, payload?: any) => {
-  window?.postMessage({ type, payload }, '*')
+export const sendPostMessage = (type, payload?) => {
+  window?.ReactNativeWebview.postMessage(JSON.stringify({ type, payload }))
 }
