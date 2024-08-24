@@ -1,9 +1,6 @@
 import { atom, RecoilState } from 'recoil';
-import { Trash } from '../../interfaces/trash';
+import { TrashInfo } from '../../interfaces/trash';
 
-interface TrashInfo {
-  list: Trash[]
-}
 
 const initialTrashInfo: TrashInfo = {
   list: []

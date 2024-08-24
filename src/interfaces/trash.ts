@@ -1,4 +1,4 @@
-import { Location } from './map';
+import { MapLocation } from './map';
 
 export const enum TrashType {
   BOTTLE = 'BOTTLE',
@@ -8,6 +8,10 @@ export const enum TrashType {
 }
 
 export interface Trash {
-  location: Location
+  location: MapLocation
   type: TrashType
+}
+
+export interface TrashInfo {
+  list: Trash[]
 }
