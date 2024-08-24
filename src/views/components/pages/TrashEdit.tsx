@@ -72,6 +72,7 @@ const TrashEdit = () => {
     <>
       <Header />
       <Map
+        useIndex
         type='report'
         markers={tempTrashInfos}
         onClickMap={handleSetTempData}

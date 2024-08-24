@@ -5,6 +5,7 @@ import { Trash } from '../../interfaces/trash';
 import React from 'react';
 
 interface Props {
+  useIndex?: boolean
   type?: 'full' | 'report'
   onDranEnd?: (e) => void
   markers?: Trash[]
@@ -15,11 +16,12 @@ interface Props {
   onChange?: (e) => void
 }
 
-const Map = ({ type = 'full', onDranEnd, onChange, onClickMap, markers, defaultCenter, selectedLocation, userLocation }: Props) => {
+const Map = ({ useIndex = false, type = 'full', onDranEnd, onChange, onClickMap, markers, defaultCenter, selectedLocation, userLocation }: Props) => {
   if (!defaultCenter) {
     return (
       <div className={styles[`wrap-${type}`]}>
         <GoogleMap
+          useIndex={useIndex}
           onDranEnd={onDranEnd}
           onChange={onChange}
           markers={markers}
@@ -35,6 +37,7 @@ const Map = ({ type = 'full', onDranEnd, onChange, onClickMap, markers, defaultC
   return (
     <div className={styles[`wrap-${type}`]}>
       <GoogleMap
+        useIndex={useIndex}
         onDranEnd={onDranEnd}
         onChange={onChange}
         markers={markers}

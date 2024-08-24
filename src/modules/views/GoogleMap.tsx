@@ -6,7 +6,7 @@ import { TYPE_ICON } from '../../consts/trash';
 import MapPin from "../../views/ui/MapPin";
 import MapUserPin from "../../views/ui/MapUserPin";
 
-const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, defaultCenter, selectedLocation, userLocation }) => {
+const GoogleMap = ({ useIndex, onDranEnd, onClickMap, onChange, markers, defaultCenter, selectedLocation, userLocation }) => {
   const handleClick = useCallback((e) => {
     onClickMap?.(e)
   }, []);
@@ -22,7 +22,7 @@ const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, defaultCenter, se
         onDragend={onDranEnd}
         onCameraChanged={onChange}
       >
-        <PoiMarkers markers={markers} />
+        <PoiMarkers markers={markers} useIndex={useIndex} />
         {userLocation?.lat &&
           <AdvancedMarker
             key={`${userLocation.lat}-${userLocation.lng}`}
@@ -40,7 +40,7 @@ const GoogleMap = ({ onDranEnd, onClickMap, onChange, markers, defaultCenter, se
   );
 };
 
-const PoiMarkers = ({ markers = [] }) => {
+const PoiMarkers = ({ markers = [], useIndex }) => {
   if (markers?.length === 0) {
     return null
   }
@@ -51,7 +51,7 @@ const PoiMarkers = ({ markers = [] }) => {
         <AdvancedMarker
           key={`${marker?.location?.lat}-${index}`}
           position={marker?.location}>
-          <MapPin icon={TYPE_ICON[marker.type].icon} />
+          <MapPin icon={TYPE_ICON[marker.type].icon} useIndex={useIndex} index={index} />
         </AdvancedMarker>
       ))}
     </>
