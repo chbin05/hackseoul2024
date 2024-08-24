@@ -1,15 +1,11 @@
 import React from 'react'
+import Button from './Button'
 
-import styles from './ButtonWrapper.module.scss'
 
-type Props = {
-  children: React.ReactNode;
-}
-
-const ButtonWrapper: React.FC = ({children}: Props) => {
+const ButtonWrapper = () => {
   return (
-    <div className={styles.wrap}>
-      {children}
+    <div>
+      <Button title='text' />
     </div>
   )
 }

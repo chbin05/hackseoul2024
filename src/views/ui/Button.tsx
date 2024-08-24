@@ -2,12 +2,7 @@ import React from 'react'
 
 import styles from './Button.module.scss'
 
-type Props = {
-  title: string;
-  onClick?: VoidFunction;
-}
-
-const Button: React.FC = ({title, onClick}: Props) => {
+const Button = ({title, onClick}) => {
   return (
     <button className={styles.wrap} type='button' onClick={onClick}>
       {title}

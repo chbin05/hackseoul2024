@@ -3,7 +3,7 @@ import React from 'react'
 import GoogleMap from '../../modules/views/GoogleMap';
 import styles from './Map.module.scss'
 
-type Props = {
+interface Props {
   type?: 'full' | 'report'
 }
 
