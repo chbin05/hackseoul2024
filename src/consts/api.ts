@@ -1,0 +1,1 @@
+export const apiDomain = 'http://175.106.98.14:8080'
