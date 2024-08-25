@@ -1,6 +1,6 @@
 ## GARBAGE COLLECT 
 
-### [WEB] Get Started
+### Get Started
 #### build
 yarn build
 
@@ -8,6 +8,8 @@ yarn build
 yarn start
 
 ### What is GC
+<img width="356" alt="스크린샷 2024-08-25 오전 11 12 19" src="https://github.com/user-attachments/assets/8df54bf5-c911-4453-949d-573f49ed2523">
+
 With location-based services, "The area I live in" gets clean.
 
 ### Why People Use GC
@@ -21,5 +23,5 @@ It can be used lightly in everyday life as if it were a Pokémon!
 https://github.com/chbin05/hackseoul2024/issues
 
 ### Maintainer
-sweetzhzh@gmail.com
+sweetzhzh@gmail.com <br>
 siyoon.syj@gmail.com
