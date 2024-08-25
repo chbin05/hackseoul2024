@@ -28,5 +28,5 @@ It can be used lightly in everyday life as if it were a Pokémon!
 https://github.com/chbin05/hackseoul2024/issues
 
 ### Maintainer
-sweetzhzh@gmail.com <br>
-siyoon.syj@gmail.com
+Jeongeun Lee : sweetzhzh@gmail.com <br>
+Siyoon Jung : siyoon.syj@gmail.com
