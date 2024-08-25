@@ -51,7 +51,7 @@ const PoiMarkers = ({ markers = [], useIndex }) => {
         <AdvancedMarker
           key={`${marker?.location?.lat}-${index}`}
           position={marker?.location}>
-          <MapPin icon={TYPE_ICON[marker.type].icon} useIndex={useIndex} index={index} />
+          <MapPin icon={TYPE_ICON[marker.type].icon} useIndex={useIndex} index={index + 1} />
         </AdvancedMarker>
       ))}
     </>
