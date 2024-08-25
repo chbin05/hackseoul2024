@@ -1,15 +1,19 @@
 @import "../../scss/utils";
 
 .wrap {
+  overflow: hidden;
   height: 44px;
 }
 
 .title {
-  padding: 0 20px;
-
+  padding: 0 8px;
 }
 
 .link {
+  display: flex;
+  align-items: center;
+  height: 100%;
   color: $black-armor-wash;
-  font-size: 24px;
+  color: $blue-ceil;
+  font-size: 24px
 }
